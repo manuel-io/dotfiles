@@ -1,0 +1,7 @@
+SHELL=/bin/bash
+MAILDIR=$HOME/mail
+DEFAULT=$MAILDIR/inbox
+LOCKFILE=$HOME/.lockmail
+
+# Anything that has not been delivered by now will go to $DEFAULT               
+# using LOCKFILE=$DEFAULT$LOCKEXT

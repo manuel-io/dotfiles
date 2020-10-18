@@ -1,0 +1,21 @@
+# ~/.zshrc.local
+umask 037
+
+echo "$(id -u --name)@$(hostname) using zsh"
+echo "$(date '+%Y-%m-%d, %H:%M')"
+
+# User specific environment and startup programs
+[ -f ${HOME}/profile/config.sh ] && source "${HOME}/profile/config.sh"
+
+for file in ~/.bash/{aliases,variables,functions}.sh
+do
+  [ -f "${file}" ] && source "${file}"
+done
+
+source $ZSH/oh-my-zsh.sh
+
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
+
+git config --global user.name  "${GIT_USER}"
+git config --global user.email "${GIT_MAIL}"

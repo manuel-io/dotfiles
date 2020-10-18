@@ -1,0 +1,10 @@
+[diff]
+  tool = vimdiff
+[push]
+  default = simple
+[alias]
+  graph = log --all --graph --pretty='format:%C(yellow)%h%C(green)%d %C(white)%s %C(cyan)%an, %ar %Creset'
+  amend = commit --amend -C HEAD
+[color]
+  branch = auto
+  diff = auto

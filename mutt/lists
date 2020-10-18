@@ -1,0 +1,6 @@
+send-hook . 'unmy_hdr From:'
+send-hook . 'unmy_hdr Reply-To:'
+send-hook . 'unmy_hdr Fcc:'
+
+send-hook '~t ^postfix-users' 'my_hdr Reply-To: postfix-users@postfix.org'
+send-hook '~t ^rockbox@cool.haxx.se' 'my_hdr Reply-To: rockbox@cool.haxx.se'

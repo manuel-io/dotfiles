@@ -1,0 +1,85 @@
+set realname=$REALNAME
+set hostname=$HOSTNAME
+
+set from=$FROMNAME
+set folder="imap://$FROMNAME@posteo.de"
+set spoolfile="imap://$FROMNAME@posteo.de/INBOX"
+set mbox="+INBOX"
+set postponed="+Drafts"
+set record="+Sent"
+
+set date_format="%Y.%m.%d %H:%M:%S %z"
+set attribution="On %d, %n wrote:"
+set forw_format="Fwd: %s"
+set indent_str="> "
+set editor="vim"
+set sort="threads"
+set send_charset="us-ascii:utf-8"
+
+set allow_8bit=yes
+set include=yes
+set copy=yes
+set delete=ask-yes
+set askcc=no
+set mark_old=no
+set reverse_alias=yes
+set reverse_name=yes
+set beep_new=yes
+set fast_reply=yes
+set hidden_host=yes
+set use_ipv6=yes
+set imap_check_subscribed=yes
+set reply_to=ask-yes
+set print=ask-no
+set edit_headers=yes
+set move=no
+set save_empty=no
+set prompt_after=no
+set ssl_use_sslv3=no
+set ssl_starttls=yes
+
+set mail_check=5
+set sleep_time=0
+
+set header_cache="~/.mutt/cache"
+set alias_file="~/.mutt/aliases"
+set signature="~/.mutt/signature |"
+
+set smtp_url="smtp://$FROMNAME@posteo.de:587"
+set smtp_pass=`gnome-keyring-query get posteo`
+set imap_pass=`gnome-keyring-query get posteo`
+
+set crypt_verify_sig=yes
+set pgp_use_gpg_agent=no
+set pgp_replyencrypt=yes
+set pgp_replysign=yes
+set pgp_replysignencrypted=yes
+set pgp_autoinline=yes
+set pgp_sign_as="076AAEDF"
+
+source ~/.mutt/mailboxes
+source ~/.mutt/lists
+
+bind index '^' imap-fetch-mail
+bind index <left> previous-entry
+bind index <right> next-entry
+bind pager <up> previous-line
+bind pager <down> next-line
+bind pager <pageup> previous-page   
+bind pager <pagedown> next-page 
+bind pager \t next-unread
+
+color header white black .
+color body yellow default [_a-z\.\$A-Z0-9-]+@[a-zA-Z0-9\./\-]+
+color body yellow default (https?|ftp)://[_a-zA-Z0-9\./\-=&?\#\~]+
+color quoted white default
+color signature white black
+color attachment blue default
+color tree green default
+color indicator brightwhite black
+color status black yellow
+color tilde red black
+color normal green default
+
+auto_view text/html text/enriched application/x-gunzip application/postscript image/gif application/x-tar-gz
+alternative_order text/plain text/html
